@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 //#include "gl/glew.h"
-#include "glut/glut.h"
+// #include "glut/glut.h"
 #include "simpleDraw.h"
 #include "Headers.h"
 //#pragma comment (lib, "glew32.lib")
@@ -101,7 +101,7 @@ void SetupRC(void)
 
     //设置表面材料的属性
     GLfloat mat_ambient[] = {0.6f,0.6f,0.6f,1.0f};
-    GLfloat mat_diffuse[] = {0.5f,0.5f,0.5f,1.0f};
+    GLfloat mat_diffuse[] = {0.5inf,0.5f,0.5f,1.0f};
     GLfloat mat_specular[] = {1.0f,1.0f,1.0f,1.0f,};
     GLfloat mat_shininess[] = {40.0f};
     glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);		//指定环境泛光的强度
