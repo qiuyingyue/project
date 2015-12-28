@@ -22,12 +22,17 @@ vec3 CTbrdf(vec3 n, vec3 l, vec3 v){
 	vdoth = max(dot(v,h),0.0);
 	ldoth = max(dot(l,h),0.0);
 	Den = 4.0*ndotl*ndotv;
+	if(Den==0) Den=1;
 	//Cook-Torrance
-	G =min(1.0, min(2.0*ndoth*ndotv/vdoth,2.0*ndoth*ndotl/vdoth));
+	if(vdoth!=0)
+		G =min(1.0, min(2.0*ndoth*ndotv/vdoth,2.0*ndoth*ndotl/vdoth));
+	else
+		G = 1.0;
 	//GGX
-	D = pow(a,2.0)/(3.1415926*pow(
-    		(pow(ndoth,2.0)*(a*a-1.0)+1.0)
-        	,2.0));
+	if(ndoth!=0)
+		D = pow((a/(pow(ndoth,2.0)*(a*a-1.0)+1.0)),2.0)/3.1415926;
+	else
+		D = 1.0;
     //Schilick Approximation
     F = rf + pow((1.0-ldoth),5.0)*(unit - rf);
     brdf = D*G*ndotl/Den*F;
@@ -46,6 +51,9 @@ void main(){
 	else
 		brdf = CTbrdf(norm,lightDir,view);
     cf = xdot(brdf,diffuse) + ambient;
+    //if(cf.x>1) cf.x=1;
+    //if(cf.y>1) cf.y=1;
+    //if(cf.z>1) cf.z=1;
     af = 1.0;
     gl_FragColor = vec4(cf, af); 
 }

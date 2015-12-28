@@ -1,7 +1,7 @@
 #include "ShaderSource.h"
 
 int LightSource::lightNum(1);
-int movu = 10;
+int movu = 1;
 GLint currentlight;
 LightSource light[10];
 
@@ -13,7 +13,7 @@ LightSource::LightSource(){
 	const float dAmbient[4] = { 0.4f, 0.4f, 0.4f, 1.0f };
 	const float dDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	const float dDirection[3] = { -0.57735f, -0.57735f, -0.57735f };
-	const float dPostion[4] = { 0.0f, 10.0f, 0.0f, 1.0f };
+	const float dPostion[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	const float dDistance = 10.0f;
 	lightAmbient = new float[4];
 	lightDiffuse = new float[4];
@@ -25,7 +25,7 @@ LightSource::LightSource(){
 	for (int i = 0; i < 4; i++)
 		lightDiffuse[i] = dDiffuse[i];
 	for (int i = 0; i < 3; i++)
-		lightDirection[i] = dDiffuse[i];
+		lightDirection[i] = dDirection[i];
 	for (int i = 0; i < 4; i++)
 		lightPosition[i] = dPostion[i];
 	/*float l = sqrtf(powf(lightDirection[0], 2) + powf(lightDirection[1], 2) + powf(lightDirection[2], 2));

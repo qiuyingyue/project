@@ -20,21 +20,37 @@ void renderScene(void) {
 	//Use Shader
 	glLightfv(GL_LIGHT0, GL_POSITION, light[currentlight].lightPosition);
 	GLint currentProgram = programs[currentShader];
-	glUseProgram(currentProgram);
+	if (currentShader == 0)
+		glUseProgram(currentProgram);
+	else
+		glUseProgram(0);
 	glUniform3fv(glGetUniformLocation(currentProgram, "lightPos"), 1, light[currentlight].lightPosition);	
 	glUniform3fv(glGetUniformLocation(currentProgram, "ambient"), 1, light[currentlight].lightAmbient);
 	glUniform3fv(glGetUniformLocation(currentProgram, "diffuse"), 1, light[currentlight].lightDiffuse);
 	glUniform3fv(glGetUniformLocation(currentProgram, "rf"), 1, rf);
 	glUniform1f(glGetUniformLocation(currentProgram, "roughness"), roughness);
 	//glutSolidTeapot(1);
+	GLfloat white[] = { 0.4, 0.4, 0.4, 1.0 };
+	GLfloat highwhite[] = { 0.8, 0.8, 0.8, 1.0 };
+	GLfloat green[] = { 0.0, 1.0, 0.0, 1.0 };//{ 0.95, 0.60, 0.75 ,1.0}; //pink
+	GLfloat dark[] = { 0.0, 0.0, 0.0, 1.0 };
+	glEnable(GL_LIGHTING);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, dark);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, white);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, highwhite);
+	glEnable(GL_LIGHT0);
 	//画了一个地面
 	glColor3f(0.9f, 0.9f, 0.9f);
 	glBegin(GL_QUADS);
-	glVertex3f(-100.0f, 0.0f, -100.0f);
-	glVertex3f(-100.0f, 0.0f, 100.0f);
-	glVertex3f(100.0f, 0.0f, 100.0f);
 	glVertex3f(100.0f, 0.0f, -100.0f);
+	glVertex3f(100.0f, 0.0f, 100.0f);
+	glVertex3f(-100.0f, 0.0f, 100.0f);
+	glVertex3f(-100.0f, 0.0f, -100.0f);
 	glEnd();
+	glPushMatrix();
+	glTranslatef(light[currentlight].lightPosition[0], light[currentlight].lightPosition[1], light[currentlight].lightPosition[2]);
+	glutSolidSphere(1, 20, 20);
+	glPopMatrix();
 
 	//画了36个雪人
 
