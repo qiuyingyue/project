@@ -35,7 +35,7 @@ LightSource::LightSource(){
 	lightPosition[3] = 1.0f;*/
 }
 
-void inputKey(unsigned char key, int x, int y) {
+void lightpressKey(unsigned char key, int x, int y) {
 	switch (key) {
 	case 'd': {
 		light[currentlight].lightPosition[0] += movu;

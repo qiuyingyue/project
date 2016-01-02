@@ -8,3 +8,7 @@ void orientMe(float ang);
 void moveMeFlat(int direction);
 void pressKey(int key, int x, int y);
 void releaseKey(int key, int x, int y);
+void mouseClick(int button, int state, int x, int y);
+void mouseMove(int x, int y);
+void zoomToFit();
+void pan();

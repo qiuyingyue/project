@@ -26,4 +26,4 @@ void initShaderList();
 void initLightlist();
 char *textFileRead(const char *fileName);
 GLuint setupShaders(char *shaderName);
-void inputKey(unsigned char key, int x, int y);
+void lightpressKey(unsigned char key, int x, int y);

@@ -12,6 +12,8 @@ void renderScene(void) {
 		angle += deltaAngle;
 		orientMe(angle);
 	}
+	pan();
+	zoomToFit();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
@@ -84,9 +86,11 @@ int main(int argc, char **argv)
 	initScene();
 
 	glutIgnoreKeyRepeat(1);
-	glutSpecialFunc(pressKey);
-	glutSpecialUpFunc(releaseKey);
-	glutKeyboardFunc(inputKey);
+	glutSpecialFunc(pressKey);		//Move Control by Keyboard
+	glutSpecialUpFunc(releaseKey);	//Move Control by Keyboard
+	glutKeyboardFunc(lightpressKey);		//Light Control
+	glutMouseFunc(mouseClick);		//Move Control by Mouse click
+	glutMotionFunc(mouseMove);		//Move Control by Mouse move
 
 	glutDisplayFunc(renderScene);
 	glutIdleFunc(renderScene);
