@@ -72,6 +72,7 @@
     <ClCompile Include="CGdrive.h" />
     <ClCompile Include="CGlight.cpp" />
     <ClCompile Include="CGmain.cpp" />
+    <ClCompile Include="CGmaterial.cpp" />
     <ClCompile Include="CGshader.cpp" />
   </ItemGroup>
   <ItemGroup>

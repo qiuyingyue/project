@@ -51,6 +51,9 @@
     <ClCompile Include="CGlight.cpp">
       <Filter>源文件\CGlighting</Filter>
     </ClCompile>
+    <ClCompile Include="CGmaterial.cpp">
+      <Filter>源文件\CGlighting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGdraw.h">

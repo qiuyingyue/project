@@ -10,6 +10,7 @@ void main()
     ecPos = gl_ModelViewMatrix * gl_Vertex;  
     aux = vec3(gl_LightSource[0].position-ecPos);  
     lightDir = normalize(aux);  
+    //lightDir = normal; Cheap environment
 	gl_Position = ftransform();  
     //lightDir = normalize(lp-gl_Position.xyz);
     //lightDir = normalize(lightPos);

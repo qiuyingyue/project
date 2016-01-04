@@ -77,5 +77,5 @@ void initShaderList(){
 	programs[0] = setupShaders("Cook-Torrorence");
 	//for (int i = 1; i < NUM_SHADERS ; i++)
 		//programs[i] = setupShaders("Cook-Torrorence");
-	currentShader = 0;
+	currentShader = 1;
 }

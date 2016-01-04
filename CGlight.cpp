@@ -10,7 +10,8 @@ void initLightlist(){
 }
 
 LightSource::LightSource(){
-	const float dAmbient[4] = { 0.4f, 0.4f, 0.4f, 1.0f };
+	//const float dAmbient[4] = { 0.4f, 0.4f, 0.4f, 1.0f };
+	const float dAmbient[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	const float dDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	const float dDirection[3] = { -0.57735f, -0.57735f, -0.57735f };
 	const float dPostion[4] = { 0.0f, 0.0f, 0.0f, 1.0f };

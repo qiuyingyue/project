@@ -14,10 +14,38 @@ public:
 		delete[] lightDiffuse;
 		delete[] lightDirection;
 		delete[] lightPosition;
+	};
+};
+
+class MaterialSource{
+public:
+	float *rf;				// The parameters of the Schlick fresnel item
+	float roughness = 1.0f;	// The parameters of the materail roughness
+	MaterialSource(){
+		rf = new float[3];
+	}
+	void SetParameter(float r, float g, float b, float rn){
+		rf[0] = r; rf[1] = g; rf[2] = b;
+		roughness = rn;
+	}
+	~MaterialSource(){
+		delete[] rf;
 	}
 };
 
+//The list of the Material
+class MaterialList{
+public:
+	MaterialSource *mList;
+	int mNum;
+	MaterialList();
+	~MaterialList(){
+		delete[] mList;
+	};
+};
+
 extern LightSource light[10];
+extern MaterialList material;
 extern GLuint programs[NUM_SHADERS];
 extern GLint currentShader;
 extern GLint currentlight;

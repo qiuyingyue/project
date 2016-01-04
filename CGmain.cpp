@@ -3,8 +3,13 @@
 #include "CGcamera.h"
 #include "ShaderSource.h"
 
-float rf[] = { 0.91f, 0.92f, 0.92f };
-float roughness = 1.0f;
+//float rf[] = { 0.91f, 0.92f, 0.92f };
+//float roughness = 1.0f;
+
+void attachMaterial(int ID, GLint currentProgram){
+	glUniform3fv(glGetUniformLocation(currentProgram, "rf"), 1, material.mList[ID].rf);
+	glUniform1f(glGetUniformLocation(currentProgram, "roughness"), material.mList[ID].roughness);
+}
 void renderScene(void) {
 	if (deltaMove)
 		moveMeFlat(deltaMove);
@@ -26,11 +31,10 @@ void renderScene(void) {
 		glUseProgram(currentProgram);
 	else
 		glUseProgram(0);
-	glUniform3fv(glGetUniformLocation(currentProgram, "lightPos"), 1, light[currentlight].lightPosition);	
+	//glUniform3fv(glGetUniformLocation(currentProgram, "lightPos"), 1, light[currentlight].lightPosition);	
 	glUniform3fv(glGetUniformLocation(currentProgram, "ambient"), 1, light[currentlight].lightAmbient);
 	glUniform3fv(glGetUniformLocation(currentProgram, "diffuse"), 1, light[currentlight].lightDiffuse);
-	glUniform3fv(glGetUniformLocation(currentProgram, "rf"), 1, rf);
-	glUniform1f(glGetUniformLocation(currentProgram, "roughness"), roughness);
+	attachMaterial(0,currentProgram);
 	//glutSolidTeapot(1);
 	GLfloat white[] = { 0.4, 0.4, 0.4, 1.0 };
 	GLfloat highwhite[] = { 0.8, 0.8, 0.8, 1.0 };
@@ -55,9 +59,10 @@ void renderScene(void) {
 	glPopMatrix();
 
 	//ª≠¡À36∏ˆ—©»À
-
+	int k = 0;
 	for (int i = -3; i < 3; i++)
-		for (int j = -3; j < 3; j++) {
+		for (int j = -3; j < 3; j++, k++) {
+		attachMaterial(k%5, currentProgram);
 		glPushMatrix();
 		glTranslatef(i*10.0, 0, j * 10.0);
 		glCallList(snowman_display_list);;
