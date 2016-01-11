@@ -1,4 +1,4 @@
-#include "bmpReader.h"
+#include "CGTexture.h"
 bool BmpReader::readBMP(const char* filename){
 	FILE *fpi;
 	fpi = fopen(filename, "rb");

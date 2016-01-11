@@ -1,17 +1,58 @@
 #include "ShaderSource.h"
+#include "CGcamera.h"
 
 int LightSource::lightNum(1);
 int movu = 1;
 GLint currentlight;
+float density = 0.6;
 LightSource light[10];
 
-void initLightlist(){
-	currentlight = 0;
+// init the light number
+void initLightlist(int num){
+	currentlight = num;
+	light[1].lightPosition[0] = 10;
+	light[1].lightPosition[1] = -5;
+	light[1].lightPosition[2] = 66;
+
 }
 
+// Refresh the light
+void RefreshLight(GLuint currentProgram){
+	glUniform1f(glGetUniformLocation(currentProgram, "density"), density);
+	float pos[3] = { x + lx*wallunit/2, y + ly*wallunit/2, z + (lz+2)*wallunit/2 };
+	light[0].lightPosition[0] = pos[0];
+	light[0].lightPosition[1] = pos[1];
+	light[0].lightPosition[2] = pos[2];
+	//light[1].lightPosition[0] = 471;
+	//light[1].lightPosition[1] = 0;
+	//light[1].lightPosition[2] = 476;
+	light[0].lightDiffuse[0] = light[0].lightDiffuse[1] = light[0].lightDiffuse[2] = 50.0f;
+	light[1].lightDiffuse[0] = light[1].lightDiffuse[1] = light[1].lightDiffuse[2] = 100.0f;
+	if (currentlight >= 0){
+		glLightfv(GL_LIGHT0, GL_POSITION, light[0].lightPosition);
+		glLightfv(GL_LIGHT0, GL_AMBIENT, light[0].lightAmbient);
+		glLightfv(GL_LIGHT0, GL_DIFFUSE, light[0].lightDiffuse);
+	}
+	if (currentlight >= 1){
+		glLightfv(GL_LIGHT1, GL_POSITION, light[1].lightPosition);
+		glLightfv(GL_LIGHT1, GL_AMBIENT, light[1].lightAmbient);
+		glLightfv(GL_LIGHT1, GL_DIFFUSE, light[1].lightDiffuse);
+	}
+	if (currentlight >= 2){
+		glLightfv(GL_LIGHT2, GL_POSITION, light[2].lightPosition);
+		glLightfv(GL_LIGHT2, GL_AMBIENT, light[2].lightAmbient);
+		glLightfv(GL_LIGHT2, GL_DIFFUSE, light[2].lightDiffuse);
+	}
+	if (currentlight >= 3){
+		glLightfv(GL_LIGHT3, GL_POSITION, light[3].lightPosition);
+		glLightfv(GL_LIGHT3, GL_AMBIENT, light[3].lightAmbient);
+		glLightfv(GL_LIGHT3, GL_DIFFUSE, light[3].lightDiffuse);
+	}
+}
+
+
 LightSource::LightSource(){
-	//const float dAmbient[4] = { 0.4f, 0.4f, 0.4f, 1.0f };
-	const float dAmbient[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	const float dAmbient[4] = { 0.4f, 0.4f, 0.4f, 1.0f };
 	const float dDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	const float dDirection[3] = { -0.57735f, -0.57735f, -0.57735f };
 	const float dPostion[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
@@ -29,32 +70,36 @@ LightSource::LightSource(){
 		lightDirection[i] = dDirection[i];
 	for (int i = 0; i < 4; i++)
 		lightPosition[i] = dPostion[i];
-	/*float l = sqrtf(powf(lightDirection[0], 2) + powf(lightDirection[1], 2) + powf(lightDirection[2], 2));
-	lightPosition[0] = -lightDistance*lightDirection[0] / l;
-	lightPosition[1] = -lightDistance*lightDirection[1] / l;
-	lightPosition[2] = -lightDistance*lightDirection[2] / l;
-	lightPosition[3] = 1.0f;*/
 }
 
-void lightpressKey(unsigned char key, int x, int y) {
+void lightpressKey(int key, int x, int y) {
 	switch (key) {
-	case 'd': {
+	case GLUT_KEY_RIGHT: {
 		light[currentlight].lightPosition[0] += movu;
 		break; }
-	case 'a': {
+	case GLUT_KEY_LEFT: {
 		light[currentlight].lightPosition[0] -= movu;
 		break; }
-	case 'w': {
+	case GLUT_KEY_UP: {
 		light[currentlight].lightPosition[1] += movu;
 		break; }
-	case 's': {
+	case GLUT_KEY_DOWN: {
 		light[currentlight].lightPosition[1] -= movu;
 		break; }
-	case 'z': {
+	case GLUT_KEY_PAGE_UP: {
 		light[currentlight].lightPosition[2] += movu;
 		break; }
-	case 'x': {
+	case GLUT_KEY_PAGE_DOWN: {
 		light[currentlight].lightPosition[2] -= movu;
 		break; }
+	case GLUT_KEY_HOME: {
+		density += 0.1;
+		if (density > 1.0) density = 1.0;
+		break; }
+	case GLUT_KEY_END: {
+		density -= 0.1;
+		if (density < 0.1) density = 0.1;
+		break; }
 	}
+	printf("%lf %lf %lf\n", light[currentlight].lightPosition[0], light[currentlight].lightPosition[1], light[currentlight].lightPosition[2]);
 }

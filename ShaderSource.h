@@ -1,5 +1,4 @@
 #include "CGdrive.h"
-#define NUM_SHADERS 1
 class LightSource{
 public:
 	static int lightNum;
@@ -9,6 +8,9 @@ public:
 	float* lightDirection;// [3] = { -0.57735f, -0.57735f, -0.57735f };
 	float lightDistance;// = 10.0f;
 	LightSource();
+	LightSource(float *dDiffuse, float *dPostion){
+
+	};
 	~LightSource(){
 		delete[] lightAmbient;
 		delete[] lightDiffuse;
@@ -47,11 +49,12 @@ public:
 extern LightSource light[10];
 extern MaterialList material;
 extern GLuint programs[NUM_SHADERS];
-extern GLint currentShader;
 extern GLint currentlight;
 
 void initShaderList();
-void initLightlist();
+void initLightlist(int num);
+void RefreshLight(GLuint currentShader);
+
 char *textFileRead(const char *fileName);
 GLuint setupShaders(char *shaderName);
-void lightpressKey(unsigned char key, int x, int y);
+void lightpressKey(int key, int x, int y);

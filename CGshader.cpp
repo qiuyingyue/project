@@ -2,7 +2,6 @@
 
 GLuint vShader, fShader;
 GLuint programs[NUM_SHADERS];
-int currentShader;
 // To read the shader text file for binding shader
 char *textFileRead(const char *fileName)
 {
@@ -77,5 +76,4 @@ void initShaderList(){
 	programs[0] = setupShaders("Cook-Torrorence");
 	//for (int i = 1; i < NUM_SHADERS ; i++)
 		//programs[i] = setupShaders("Cook-Torrorence");
-	currentShader = 1;
 }

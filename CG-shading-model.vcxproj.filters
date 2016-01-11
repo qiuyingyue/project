@@ -25,11 +25,20 @@
     <Filter Include="源文件\CGlighting">
       <UniqueIdentifier>{e669b7c7-b81b-4fab-bb70-88adfcb04365}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\CGMap">
+      <UniqueIdentifier>{044d4b43-9051-46c3-984d-6f3dfb437d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\CGMap">
+      <UniqueIdentifier>{34865212-a9a0-41b8-b783-84c0a1415b67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\CGevent">
+      <UniqueIdentifier>{6f3cda9a-bbe3-4df7-912c-c9f4d39b7069}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\CGevent">
+      <UniqueIdentifier>{e7a9965c-786c-4d1d-b780-65c8c3ad91a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CGmain.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="CGdrive.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -42,9 +51,6 @@
     <ClCompile Include="CGdrive.h">
       <Filter>头文件</Filter>
     </ClCompile>
-    <ClCompile Include="bmpReader.cpp">
-      <Filter>源文件\CGTexture</Filter>
-    </ClCompile>
     <ClCompile Include="CGshader.cpp">
       <Filter>源文件\CGlighting</Filter>
     </ClCompile>
@@ -54,6 +60,33 @@
     <ClCompile Include="CGmaterial.cpp">
       <Filter>源文件\CGlighting</Filter>
     </ClCompile>
+    <ClCompile Include="CGTexture.cpp">
+      <Filter>源文件\CGTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorModel.cpp">
+      <Filter>源文件\CGMap</Filter>
+    </ClCompile>
+    <ClCompile Include="MonitorModel.cpp">
+      <Filter>源文件\CGMap</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjModel.cpp">
+      <Filter>源文件\CGMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CGmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CGevent.cpp">
+      <Filter>源文件\CGevent</Filter>
+    </ClCompile>
+    <ClCompile Include="aviReader.cpp">
+      <Filter>源文件\CGevent</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>源文件\CGTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="nurbs2.cpp">
+      <Filter>源文件\CGMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGdraw.h">
@@ -62,11 +95,32 @@
     <ClInclude Include="CGcamera.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="bmpReader.h">
+    <ClInclude Include="CGTexture.h">
       <Filter>头文件\CGTexture</Filter>
     </ClInclude>
     <ClInclude Include="ShaderSource.h">
       <Filter>头文件\CGlighting</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjModel.h">
+      <Filter>头文件\CGMap</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorModel.h">
+      <Filter>头文件\CGMap</Filter>
+    </ClInclude>
+    <ClInclude Include="MonitorModel.h">
+      <Filter>头文件\CGMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CGevent.h">
+      <Filter>头文件\CGevent</Filter>
+    </ClInclude>
+    <ClInclude Include="aviReader.h">
+      <Filter>头文件\CGevent</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>头文件\CGTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="nurbs.h">
+      <Filter>头文件\CGMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

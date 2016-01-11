@@ -38,7 +38,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>E:\OpenCV\opencv\build\include;E:\OpenCV\opencv\build\include\opencv;E:\OpenCV\opencv\build\include\opencv2;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\OpenCV\opencv\build\x86\vc12\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -48,6 +51,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_calib3d248.lib;opencv_calib3d248d.lib;opencv_contrib248.lib;opencv_contrib248d.lib;opencv_core248.lib;opencv_core248d.lib;opencv_features2d248.lib;opencv_features2d248d.lib;opencv_flann248.lib;opencv_flann248d.lib;opencv_gpu248.lib;opencv_gpu248d.lib;opencv_highgui248.lib;opencv_highgui248d.lib;opencv_imgproc248.lib;opencv_imgproc248d.lib;opencv_legacy248.lib;opencv_legacy248d.lib;opencv_ml248.lib;opencv_ml248d.lib;opencv_nonfree248.lib;opencv_nonfree248d.lib;opencv_objdetect248.lib;opencv_objdetect248d.lib;opencv_ocl248.lib;opencv_ocl248d.lib;opencv_photo248.lib;opencv_photo248d.lib;opencv_stitching248.lib;opencv_stitching248d.lib;opencv_superres248.lib;opencv_superres248d.lib;opencv_ts248.lib;opencv_ts248d.lib;opencv_video248.lib;opencv_video248d.lib;opencv_videostab248.lib;opencv_videostab248d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -65,21 +69,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bmpReader.cpp" />
+    <ClCompile Include="aviReader.cpp" />
     <ClCompile Include="CGcamera.cpp" />
     <ClCompile Include="CGdraw.cpp" />
     <ClCompile Include="CGdrive.cpp" />
     <ClCompile Include="CGdrive.h" />
+    <ClCompile Include="CGevent.cpp" />
     <ClCompile Include="CGlight.cpp" />
     <ClCompile Include="CGmain.cpp" />
     <ClCompile Include="CGmaterial.cpp" />
     <ClCompile Include="CGshader.cpp" />
+    <ClCompile Include="CGTexture.cpp" />
+    <ClCompile Include="DoorModel.cpp" />
+    <ClCompile Include="MonitorModel.cpp" />
+    <ClCompile Include="nurbs2.cpp" />
+    <ClCompile Include="ObjModel.cpp" />
+    <ClCompile Include="Skybox.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bmpReader.h" />
+    <ClInclude Include="aviReader.h" />
+    <ClInclude Include="CGevent.h" />
+    <ClInclude Include="CGTexture.h" />
     <ClInclude Include="CGcamera.h" />
     <ClInclude Include="CGdraw.h" />
+    <ClInclude Include="DoorModel.h" />
+    <ClInclude Include="MonitorModel.h" />
+    <ClInclude Include="nurbs.h" />
+    <ClInclude Include="ObjModel.h" />
     <ClInclude Include="ShaderSource.h" />
+    <ClInclude Include="Skybox.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cook-Torrorence.frag" />
